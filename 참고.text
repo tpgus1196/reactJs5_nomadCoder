@@ -1,0 +1,57 @@
+질문)
+import를 할때
+import {A} from "/A"로 할때도 있고
+import B form "/B" 와 같은 형식으로 할때도 있는데
+{}이 쓰일때는 언제일까요??
+
+답)
+A={name:'kim' ,city:'seoul'} 와 같이 A가 객체이고 이를 export하는 경우에는
+export default A;
+와 같이 될 것이고,
+이를 import 하는 파일(모듈)에서는
+import {name , city} from A;
+와 같이 하여 import하는 A객체의 name 속성과 city 속성을 가져올 수 있습니다. 객체 자체를 가져온다면
+import A from A; 로 해도 되겠지요
+즉 {} 이 쓰이는 경우는 import하는 대상이 '객체'일 경우입니다. 객체 안의 속성(프로퍼티)을 한 번에 가져오고자 하는 이유죠
+
+default export Movie; 처럼 default 로 export 한 경우 중괄호 없이 아무 이름으로 가져와도 되고, default가 아닌 단순 export 인 경우 중괄호 안에 이름을 정확하게 적어야 import 가 됩니다.
+Movie.js 안에
+export function Greeting () {
+return Hello ;
+}
+위 코드를 넣으시고 Home.js 에서 import 해보면
+Movie컴포넌트와 다르게 Greeting컴포넌트는 중괄호가 있어야 import 할 수 있다는 것을 확인할 수 있습니다.
+
+
+질문)
+경로 지정이 잘 안되어서 계속 시도하다가
+`Route path="/"`
+부분은 모든 라우터중에 가장 마지막에 있어야 잘 되는걸 확인 할 수 있었습니다.
+니콜라스님께서 언급하셨는지 모르겠는데 혹시 가장 마지막에 있어야하는 이유가 있을까요?
+
+답)
+Route는 path의 앞부분 부터 일치하는 부분이 있으면 그걸로 OK합니다.
+즉, "/ " 는 "/movie" 의 부분집합 이므로 "/"가 앞쪽에 있으면 "/movie"로 못 넘어갑니다.
+그럼에도 불구하고 앞쪽에다 하는걸 고집하신다면
+`Route exact path="/"` 처럼 중간에 exact를 넣으면 완전일치로 판정이 바뀌므로 순서에 상관없이 잘 되는 것을 확인 하실 수 있을 겁니다.
+
+
+
+리액트라우터돔)
+version 6 이상으로 하시려면
+https://velog.io/@kcdoggo/Switch-is-not-exported-from-react-router-dom-%EC%97%90%EB%9F%AC
+첨고하세요.
+
+
+npm i gh-pages
+: 결과물을 github pages에 업로드할 수 있게 해줌
+
+npm run build
+:package.json > script부분에서 확인 가능
+압축, 최적화 실행
+>끝나면 build 폴더 생성
+관련 영상: https://nomadcoders.co/react-for-beginners/lectures/3294
+
+
+문자열 글자수 콘솔에서 보는 법
+콘솔창에 원하는 문장을 ""안에 복붙 > .length붙이기
